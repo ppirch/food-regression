@@ -130,3 +130,6 @@ dmypy.json
 
 model/
 regression/
+
+# VSCode
+.vscode/
