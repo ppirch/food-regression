@@ -136,3 +136,5 @@ regression/
 
 img_analysis/
 out/
+models
+logs/
