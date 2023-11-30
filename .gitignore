@@ -133,3 +133,6 @@ regression/
 
 # VSCode
 .vscode/
+
+img_analysis/
+out/
