@@ -87,9 +87,7 @@ def main():
         raise ValueError(
             "Invalid loss type. Default is not supported for shared/concat"
         )
-    if (
-        args.model_type in ["classify", "regress"] and args.loss_type != "default"
-    ):  # noqa
+    if args.model_type in ["classify", "regress"] and args.loss_type != "default":
         raise ValueError(
             "Invalid loss type. Only default is supported for classify/regress"
         )
