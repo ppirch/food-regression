@@ -45,6 +45,12 @@ def add_training_args(parser: ArgumentParser):
         parser (ArgumentParser): _description_
     """
     parser.add_argument(
+        "--loss_type",
+        default="default",
+        choices=["uncertainty", "automatic"],
+        help="loss type",
+    )
+    parser.add_argument(
         "--seed",
         default=677,
         type=int,
@@ -61,12 +67,6 @@ def add_training_args(parser: ArgumentParser):
         default=10,
         type=int,
         help="epochs",
-    )
-    parser.add_argument(
-        "--loss_type",
-        default="default",
-        choices=["uncertainty", "automatic"],
-        help="loss type",
     )
 
 
