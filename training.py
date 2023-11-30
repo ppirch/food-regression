@@ -47,7 +47,7 @@ def add_training_args(parser: ArgumentParser):
     parser.add_argument(
         "--loss_type",
         default="default",
-        choices=["uncertainty", "automatic"],
+        choices=["default", "uncertainty", "automatic"],
         help="loss type",
     )
     parser.add_argument(
@@ -159,9 +159,9 @@ def main():
 
     logger.info("Start training")
     running_loss = 0.0
-    for epoch in tqdm(range(0, args.epochs)):
-        logger.info(f"Epoch: {epoch + 1}")
-        for i, data in enumerate(train_dataloader, 0):
+    for epoch in range(0, args.epochs):
+        logger.info(f"Epoch: {epoch + 1} / {args.epochs}")
+        for i, data in enumerate(tqdm(train_dataloader)):
             inputs, weight, labels = data
             weight, labels = weight.long(), labels.long()
             inputs, weight, labels = (
