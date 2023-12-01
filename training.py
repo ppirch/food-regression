@@ -153,11 +153,14 @@ def main():
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     logger.info("DEVICE: %s", device)
-
     model = model.to(device)
-    model.train()
+    if args.loss_type == "uncertainty":
+        uncertainty_loss = uncertainty_loss.to(device)
+    if args.loss_type == "automatic":
+        automatic_weighted_loss = automatic_weighted_loss.to(device)
 
     logger.info("Start training")
+    model.train()
     running_loss = 0.0
     for epoch in range(0, args.epochs):
         logger.info(f"Epoch: {epoch + 1} / {args.epochs}")
