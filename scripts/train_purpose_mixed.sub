@@ -15,7 +15,7 @@ source activate food-regression
 
 cd /project/jakarin.c/food-regression/
 
-BATCH_SIZE=512
+BATCH_SIZE=64
 SEED=677
 EPOCHS=25
 
