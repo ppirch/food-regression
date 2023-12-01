@@ -27,7 +27,6 @@ model_types=(classify regress)
 loss_type=default
 for model_type in "${model_types[@]}"; do
     for backbone in "${backbones[@]}"; do
-            SECONDS=0
             echo "Training $model_type $backbone $loss_type $SEED $EPOCHS"
             python training.py --model_type $model_type --backbone $backbone --loss_type $loss_type --batch_size $BATCH_SIZE --seed $SEED --epochs $EPOCHS
             echo "===================================================================================================="
