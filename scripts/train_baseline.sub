@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=train
+#SBATCH --job-name=train_baseline
 #SBATCH --output=./outs/%x.jobid-%j.out
 #SBATCH --nodes=1
 #SBATCH --partition=gpu
