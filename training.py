@@ -130,6 +130,18 @@ def main():
     train_dataloader = DataLoader(
         train_datasets, batch_size=args.batch_size, shuffle=True
     )
+
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    logger.info("DEVICE: %s", device)
+    model = model.to(device)
+
+    ce_loss = ce_loss.to(device)
+    l1_loss = l1_loss.to(device)
+    if args.loss_type == "uncertainty":
+        uncertainty_loss = uncertainty_loss.to(device)
+    if args.loss_type == "automatic":
+        automatic_weighted_loss = automatic_weighted_loss.to(device)
+
     if args.loss_type == "uncertainty":
         optimizer = optim.SGD(
             [
@@ -150,14 +162,6 @@ def main():
         )
     else:
         optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    logger.info("DEVICE: %s", device)
-    model = model.to(device)
-    if args.loss_type == "uncertainty":
-        uncertainty_loss = uncertainty_loss.to(device)
-    if args.loss_type == "automatic":
-        automatic_weighted_loss = automatic_weighted_loss.to(device)
 
     logger.info("Start training")
     model.train()
