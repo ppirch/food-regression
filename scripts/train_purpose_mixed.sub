@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#SBATCH --job-name=train_purpose_mix
+#SBATCH --job-name=train_purpose_mixed
 #SBATCH --output=./outs/%x.jobid-%j.out
 #SBATCH --nodes=1
-#SBATCH --partition=mix
+#SBATCH --partition=mixed
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=64
 #SBATCH --gpus=1
