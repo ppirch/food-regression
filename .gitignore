@@ -134,7 +134,6 @@ regression/
 # VSCode
 .vscode/
 
-img_analysis/
-out/
 models
 logs/
+predicts
