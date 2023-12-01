@@ -161,7 +161,6 @@ def main():
 
     logger.info("Start training")
     model.train()
-    running_loss = 0.0
     for epoch in range(0, args.epochs):
         logger.info(f"Epoch: {epoch + 1} / {args.epochs}")
         for i, data in enumerate(tqdm(train_dataloader)):
