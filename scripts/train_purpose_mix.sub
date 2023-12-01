@@ -3,7 +3,7 @@
 #SBATCH --job-name=train_purpose_mix
 #SBATCH --output=./outs/%x.jobid-%j.out
 #SBATCH --nodes=1
-#SBATCH --partition=gpu
+#SBATCH --partition=mix
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=64
 #SBATCH --gpus=1
