@@ -149,9 +149,9 @@ def main():
                 actual_classes.extend(labels.flatten().numpy())
                 weight, labels = weight.long(), labels.long()
                 inputs, weight, labels = (
-                    inputs.to(device),
-                    weight.to(device),
-                    labels.to(device),
+                    inputs.to(device, non_blocking=True),
+                    weight.to(device, non_blocking=True),
+                    labels.to(device, non_blocking=True),
                 )
                 outputs = model.forward(inputs)
 

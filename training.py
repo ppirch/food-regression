@@ -168,9 +168,9 @@ def main():
             inputs, weight, labels = data
             weight, labels = weight.long(), labels.long()
             inputs, weight, labels = (
-                inputs.to(device),
-                weight.to(device),
-                labels.to(device),
+                inputs.to(device, non_blocking=True),
+                weight.to(device, non_blocking=True),
+                labels.to(device, non_blocking=True),
             )
 
             # zero the parameter gradients
@@ -199,12 +199,6 @@ def main():
             # backward + optimize
             loss.backward()
             optimizer.step()
-
-            # display statistics
-            running_loss += loss.item()
-            if i and i % 5 == 0:
-                logger.info(f"[{i:4d}] loss: {running_loss:.5f}")
-                running_loss = 0.0
 
         logger.info("Finished Training")
         torch.save(
