@@ -9,7 +9,7 @@
 #SBATCH --gpus=1
 #SBATCH --time=7-00:00:00
 
-# module load anaconda3
+module load anaconda3
 
 source activate food-regression
 
