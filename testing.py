@@ -119,7 +119,7 @@ def main():
     else:
         raise ValueError("Invalid model type")
 
-    logger.info("MODEL: %s", model)
+    # logger.info("MODEL: %s", model)
 
     train_dataloader = DataLoader(
         train_datasets, batch_size=args.batch_size, shuffle=False
