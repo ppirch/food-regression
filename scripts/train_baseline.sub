@@ -15,8 +15,8 @@ source activate food-regression
 
 cd /project/jakarin.c/food-regression/
 
-BATCH_SIZE=512
-SEED=677
+BATCH_SIZE=256
+SEED=13
 EPOCHS=25
 
 backbones=(resnet50 resnet101 resnet152)
