@@ -115,6 +115,7 @@ def main():
 
     # logger.info("MODEL: %s", model)
 
+    test_df = pd.read_csv(f"{DATA_DIR}/csv/test.csv")
     test_datasets = FoodImagesDataset(
         csv_file=f"{DATA_DIR}/csv/test.csv",
         img_dir=f"{DATA_DIR}/test",
@@ -182,7 +183,7 @@ def main():
         logger.info("Finished Predicting")
         predicts = pd.DataFrame(
             {
-                "filename": df["filename"],
+                "filename": test_df["filename"],
                 "actual_weight": actual_weights,
                 "actual_class": actual_classes,
                 "predict_weight": predict_weights,
