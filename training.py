@@ -101,12 +101,6 @@ def main():
     le.fit(df["food"])
     n_classes = len(le.classes_)
 
-    train_datasets = FoodImagesDataset(
-        csv_file=f"{DATA_DIR}/csv/train.csv",
-        img_dir=f"{DATA_DIR}/train",
-        target_transform=le.transform,
-    )
-
     if args.model_type == "classify":
         model = ClassifyNet(backbone=args.backbone, n_classes=n_classes)
     elif args.model_type == "regress":
@@ -126,6 +120,12 @@ def main():
         uncertainty_loss = UncertaintyLoss()
     if args.loss_type == "automatic":
         automatic_weighted_loss = AutomaticWeightedLoss(2)
+
+    train_datasets = FoodImagesDataset(
+        csv_file=f"{DATA_DIR}/csv/train.csv",
+        img_dir=f"{DATA_DIR}/train",
+        target_transform=le.transform,
+    )
 
     train_dataloader = DataLoader(
         train_datasets, batch_size=args.batch_size, shuffle=True
