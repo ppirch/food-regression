@@ -176,9 +176,9 @@ def main():
                     raise ValueError("Invalid model type")
 
         if args.model_type == "classify":
-            predict_weights = ["-"] * len(df)
+            predict_weights = ["-"] * len(test_df)
         elif args.model_type == "regress":
-            predict_classes = ["-"] * len(df)
+            predict_classes = ["-"] * len(test_df)
 
         logger.info("Finished Predicting")
         predicts = pd.DataFrame(
