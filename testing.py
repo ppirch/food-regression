@@ -129,6 +129,7 @@ def main():
     model_weights = glob(
         f"./models/{args.model_type}_{args.backbone}_{args.loss_type}_*_{args.seed}_.pth",  # noqa
     )
+    model_weights = sorted(model_weights, key=lambda x: int(x.split("_")[-2]))
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     logger.info("DEVICE: %s", device)
@@ -191,7 +192,7 @@ def main():
             }
         )
         predicts.to_csv(
-            f"./predicts/{args.model_type}_{args.backbone}_{args.loss_type}_{model_weight.split('/')[-1].split('.')[0]}.csv",  # noqa
+            f"./predicts/{model_weight.split('/')[-1].split('.')[0]}.csv",  # noqa
             index=False,
         )
 
